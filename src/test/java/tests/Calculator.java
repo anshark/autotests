@@ -51,6 +51,39 @@ public class Calculator {
         assertEquals("1", result);
     }
 
+    @Test
+    public void task2() {
+        driver.get("http://google.com");
+        //ввести слово калькулятор в поле поиска и нажать enter
+        driver.findElement(By.cssSelector("input.gLFyf.gsfi")).sendKeys("Calculator", Keys.ENTER);
+
+        calculatorPage = new CalculatorPage(driver);
+        //6 ÷ 0
+        calculatorPage.button6.click();
+        calculatorPage.divide.click();
+        calculatorPage.button0.click();
+        calculatorPage.equals.click();
+
+        String result = calculatorPage.result.getText();
+        assertEquals("Infinity", result);
+    }
+
+    @Test
+    public void task3() {
+        driver.get("http://google.com");
+        //ввести слово калькулятор в поле поиска и нажать enter
+        driver.findElement(By.cssSelector("input.gLFyf.gsfi")).sendKeys("Calculator", Keys.ENTER);
+
+        calculatorPage = new CalculatorPage(driver);
+        //sin(
+        calculatorPage.sinus.click();
+        calculatorPage.openParenthesis.click();
+        calculatorPage.equals.click();
+
+        String result = calculatorPage.result.getText();
+        assertEquals("Error", result);
+    }
+
     @AfterAll
     public static void tearDown() {
         driver.quit();

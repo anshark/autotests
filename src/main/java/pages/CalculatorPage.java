@@ -53,6 +53,8 @@ public class CalculatorPage {
     @FindBy(xpath = "//span[@id='cwos']")
     public WebElement result;
 
+    @FindBy(xpath = "//div[@role='button' and text()='sin']")
+    public WebElement sinus;
 
     public CalculatorPage(WebDriver driver) {
         initElements(driver, this);
